@@ -35,20 +35,27 @@ def main():
         computer = computer_moves(options)
         
         if player_win(computer, player, outcome):
+            print()
             print(f"You chose {player}, computer chose {computer}, \nYou won this round")
+            print()
             player_points += 1
 
         if computer_win(computer, player, outcome):
+            print()
             print(f"Computer chose {computer} \nYou chose chose {player} \nComputer won this around")
+            print()
             computer_points += 1
 
         if tie(computer, player):
+            print()
             print(f"You and the computer both chose {computer} \nIt's a TIE! \nGo again!")
+            print()
 
         tries -= 1
         rounds += 1
 
-    print(f"After {rounds} rounds....")
+    print()
+    print(f"After {rounds - 1} rounds....")
     if computer_points > player_points:
         print(f"Computer won the game! \nComputer scored {computer_points} points! \nTry again!")
     elif computer_points == player_points:
