@@ -1,14 +1,20 @@
 import random
-
+import argparse
 
 def main():
-    print(generate_outcomes())
+
+    parser = argparse.ArgumentParser(description="Rock, Paper, Scissors, Lizard, Spock game")
+    parser.add_argument("rules", help="Rules of the game!")
+    args = parser.parse_args()
+    rules = args.rules
 
     outcome = generate_outcomes()
 
     player_name = get_player_name()
-
     print(f"{player_name}, welcome to a game of Rock, Paper, Scissors, Lizard, Spock")
+    print()
+    print(game_rules(rules))
+    print()
     
     options = ["rock", "paper", "scissors", "lizard", "spock"]
 
@@ -101,6 +107,20 @@ def player_moves():
 def get_player_name():
 
     return input("Enter your name: ").capitalize().strip()
+
+def game_rules(filepath):
+
+    try:
+        with open(filepath, "r", newline="") as rules:
+            reader = rules.read()
+
+            return reader
+
+            # return [line for line in rules]
+    
+    except FileNotFoundError:
+
+        return "File not found"
 
 if __name__ == "__main__":
     main()
