@@ -115,8 +115,6 @@ def game_rules(filepath):
             reader = rules.read()
 
             return reader
-
-            # return [line for line in rules]
     
     except FileNotFoundError:
 
